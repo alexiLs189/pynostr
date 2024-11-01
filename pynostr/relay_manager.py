@@ -144,8 +144,8 @@ class RelayManager:
             if relay.policy.should_read:
                 relay.add_subscription(id, filters)
 
-    def run_sync(self):
-        self.io_loop.run_sync(lambda: self.prepare_relays())
+    async def run_sync(self):
+        await self.prepare_relays()
 
     def close_subscription_on_relay(self, url: str, id: str):
         if url in self.relays:
